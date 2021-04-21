@@ -54,12 +54,11 @@ const mutations = new GraphQLObjectType({
       },
       resolve: (root, args, context, info) => {
         if (validateUrl.isValid(args.url)) {
+          const shortenedUrl = uniqueUrlCode.generate();
           const newUrl = new UrlModel({
             url: args.url,
-            shortenedUrl: uniqueUrlCode.generate(),
-            link:
-              "https://quiet-gorge-13846.herokuapp.com/" +
-              uniqueUrlCode.generate(),
+            shortenedUrl,
+            link: "https://quiet-gorge-13846.herokuapp.com/" + shortenedUrl,
           });
           return newUrl.save();
         } else {
