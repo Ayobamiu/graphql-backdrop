@@ -1,4 +1,0 @@
-todo:
-    arrange folders
-    write validators
-    write test
